@@ -10,4 +10,5 @@
 
 @interface ChecklistsViewController : UITableViewController
 
+- (IBAction)addItem:(id)sender;
 @end
