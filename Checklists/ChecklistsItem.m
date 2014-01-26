@@ -10,4 +10,8 @@
 
 @implementation ChecklistsItem
 
+-(void)toggleChecked {
+    self.checked = !self.checked;
+}
+
 @end
