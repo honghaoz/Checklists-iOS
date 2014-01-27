@@ -80,25 +80,39 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-- (IBAction)addItem:(id)sender {
-    NSInteger newRowIndex = [_items count];
-    
-    ChecklistsItem *item = [[ChecklistsItem alloc] init];
-    item.text = @"Halo! I am a new item!";
-    item.checked = NO;
-    [_items addObject:item];
-    
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:newRowIndex inSection:0];//??? section? just like contact's A B C D
-    
-    NSArray *indexPaths = @[indexPath];
-    [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
-}
-
 -(void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
     [_items removeObjectAtIndex:indexPath.row];
     NSArray *indexPaths = @[indexPath];
     [tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
+//Protocol methods
+-(void)addItemViewControllerDidCancel:(AddItemViewController *)controller{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)addItemViewControl:(AddItemViewController *)controller didFinishAddingItem:(ChecklistsItem *)item {
+    int newRowIndex = [_items count];
+    [_items addObject:item];
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:newRowIndex inSection:0];
+    NSArray *indexPaths = @[indexPath];
+    
+    [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+// set delegate
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([segue.identifier isEqualToString:@"AddItem"]){
+        //1
+        UINavigationController *navigationController = segue.destinationViewController;
+        //2
+        AddItemViewController *controller = (AddItemViewController*) navigationController.topViewController;
+        //3
+        controller.delegate = self;
+    }
+}
 
 @end
