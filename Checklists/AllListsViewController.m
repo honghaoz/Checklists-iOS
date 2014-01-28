@@ -9,6 +9,7 @@
 #import "AllListsViewController.h"
 #import "ChecklistViewController.h"
 #import "Checklist.h"
+#import "ChecklistItem.h"
 
 @interface AllListsViewController ()
 
@@ -18,26 +19,42 @@
     NSMutableArray *_lists;
 }
 
+
+#pragma mark data load and save
+
+-(NSString*)documentsDirectory{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths firstObject];
+    return documentsDirectory;
+}
+
+-(NSString*)dataFilePath{
+    return [[self documentsDirectory] stringByAppendingPathComponent:@"Checklists.plist"];
+}
+
+-(void)saveChecklists{
+    NSMutableData *data = [[NSMutableData alloc]init];
+    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc]initForWritingWithMutableData:data];
+    [archiver encodeObject:_lists forKey:@"Checklists"];
+    [archiver finishEncoding];
+    [data writeToFile:[self dataFilePath] atomically:YES];
+}
+
+-(void)loadChecklists{
+    NSString *path = [self dataFilePath];
+    if([[NSFileManager defaultManager]fileExistsAtPath:path]){
+        NSData *data =[[NSData alloc]initWithContentsOfFile:path];
+        NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc]initForReadingWithData:data];
+        _lists = [unarchiver decodeObjectForKey:@"Checklists"];
+        [unarchiver finishDecoding];
+    }else{
+        _lists = [[NSMutableArray alloc]initWithCapacity:20];
+    }
+}
+
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if ((self = [super initWithCoder:aDecoder])) {
-        _lists = [[NSMutableArray alloc] initWithCapacity:20];
-        Checklist *list;
-        
-        list = [[Checklist alloc] init];
-        list.name = @"Birthday";
-        [_lists addObject:list];
-        
-        list = [[Checklist alloc] init];
-        list.name = @"Groceries";
-        [_lists addObject:list];
-        
-        list = [[Checklist alloc] init];
-        list.name = @"Cool Apps";
-        [_lists addObject:list];
-        
-        list = [[Checklist alloc] init];
-        list.name = @"To Do";
-        [_lists addObject:list];
+        [self loadChecklists];
     }
     return self;
 }
@@ -126,6 +143,7 @@
     [self presentViewController:navigationController animated:YES completion:nil];
 }
 
+#pragma mark protocol methods
 // protocol methods
 -(void)listDetailViewControllerDidCancel:(ListDetailViewController *)controller{
     [self dismissViewControllerAnimated:YES completion:nil];
