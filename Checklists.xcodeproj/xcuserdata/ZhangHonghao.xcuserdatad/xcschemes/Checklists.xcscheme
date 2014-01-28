@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1BD40F7D1894BC1400B8857B"
+               BlueprintIdentifier = "7B6CA3C217F967DD00E68B4B"
                BuildableName = "Checklists.app"
                BlueprintName = "Checklists"
                ReferencedContainer = "container:Checklists.xcodeproj">
@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1BD40F9E1894BC1500B8857B"
+               BlueprintIdentifier = "7B6CA3E317F967DD00E68B4B"
                BuildableName = "ChecklistsTests.xctest"
                BlueprintName = "ChecklistsTests"
                ReferencedContainer = "container:Checklists.xcodeproj">
@@ -42,7 +42,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1BD40F7D1894BC1400B8857B"
+            BlueprintIdentifier = "7B6CA3C217F967DD00E68B4B"
             BuildableName = "Checklists.app"
             BlueprintName = "Checklists"
             ReferencedContainer = "container:Checklists.xcodeproj">
@@ -61,7 +61,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1BD40F7D1894BC1400B8857B"
+            BlueprintIdentifier = "7B6CA3C217F967DD00E68B4B"
             BuildableName = "Checklists.app"
             BlueprintName = "Checklists"
             ReferencedContainer = "container:Checklists.xcodeproj">
@@ -79,7 +79,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1BD40F7D1894BC1400B8857B"
+            BlueprintIdentifier = "7B6CA3C217F967DD00E68B4B"
             BuildableName = "Checklists.app"
             BlueprintName = "Checklists"
             ReferencedContainer = "container:Checklists.xcodeproj">
