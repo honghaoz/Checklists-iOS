@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B56C79618976E1E00703C90 /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B56C79518976E1E00703C90 /* DataModel.m */; };
 		1B7556F41895A38F0009CDF2 /* ChecklistItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B7556F31895A38F0009CDF2 /* ChecklistItem.m */; };
 		1B7556F71895F4750009CDF2 /* ItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B7556F61895F4750009CDF2 /* ItemDetailViewController.m */; };
 		1BD40F821894BC1400B8857B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BD40F811894BC1400B8857B /* Foundation.framework */; };
@@ -39,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1B56C79418976E1E00703C90 /* DataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModel.h; sourceTree = "<group>"; };
+		1B56C79518976E1E00703C90 /* DataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataModel.m; sourceTree = "<group>"; };
 		1B7556F21895A38F0009CDF2 /* ChecklistItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChecklistItem.h; sourceTree = "<group>"; };
 		1B7556F31895A38F0009CDF2 /* ChecklistItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChecklistItem.m; sourceTree = "<group>"; };
 		1B7556F51895F4750009CDF2 /* ItemDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemDetailViewController.h; sourceTree = "<group>"; };
@@ -140,6 +143,8 @@
 				1B7556F61895F4750009CDF2 /* ItemDetailViewController.m */,
 				1BD40F991894BC1500B8857B /* Images.xcassets */,
 				1BD40F881894BC1400B8857B /* Supporting Files */,
+				1B56C79418976E1E00703C90 /* DataModel.h */,
+				1B56C79518976E1E00703C90 /* DataModel.m */,
 				1BF1AA2A1896BF8F00BFEF3B /* Checklist.h */,
 				1BF1AA2B1896BF8F00BFEF3B /* Checklist.m */,
 				1B7556F21895A38F0009CDF2 /* ChecklistItem.h */,
@@ -277,6 +282,7 @@
 			files = (
 				1BD40F8E1894BC1400B8857B /* main.m in Sources */,
 				1BD40F921894BC1400B8857B /* ChecklistsAppDelegate.m in Sources */,
+				1B56C79618976E1E00703C90 /* DataModel.m in Sources */,
 				1BF1AA291896BBF000BFEF3B /* AllListsViewController.m in Sources */,
 				1BF1AA2F1896C8EA00BFEF3B /* ListDetailViewController.m in Sources */,
 				1BD40F981894BC1400B8857B /* ChecklistViewController.m in Sources */,
