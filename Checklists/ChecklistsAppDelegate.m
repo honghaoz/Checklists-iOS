@@ -21,7 +21,22 @@
     UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
     AllListsViewController *controller = navigationController.viewControllers[0];
     controller.dataModel = _dataModel;
+    
+//    //local notification
+//    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:4];
+//    UILocalNotification *localNotification = [[UILocalNotification alloc] init];
+//    
+//    localNotification.fireDate = date;
+//    localNotification.timeZone = [NSTimeZone defaultTimeZone];
+//    localNotification.alertBody = @"2014, New Life! I love mm";
+//    localNotification.soundName = UILocalNotificationDefaultSoundName;
+//    
+//    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+//    NSLog(@"notif!");
+    
     return YES;
+    
+    
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -55,6 +70,10 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     [self saveData];
+}
+
+-(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification{
+    NSLog(@"didReceivedLocalNotification %@",notification);
 }
 
 @end

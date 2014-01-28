@@ -41,6 +41,7 @@
     } else {
         label.text = @"";
     }
+    label.textColor = self.view.tintColor;
 }
 
 -(void) configureTextForCell:(UITableViewCell *)cell withChecklistItem: (ChecklistItem *)item{
@@ -61,6 +62,10 @@
     ChecklistItem *item = self.checklist.items[indexPath.row];
     [self configureCheckMarkForCell:cell withChecklistItem:item];
     [self configureTextForCell:cell withChecklistItem:item];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    cell.detailTextLabel.text = [dateFormatter stringFromDate:item.dueDate];
+    NSLog(@"%@", [dateFormatter stringFromDate:item.dueDate]);
     
     return cell;
 }

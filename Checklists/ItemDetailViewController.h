@@ -27,6 +27,9 @@
 
 @property (nonatomic, strong) ChecklistItem *itemToEdit;
 
+@property(nonatomic,weak) IBOutlet UISwitch *switchControl;
+@property(nonatomic,weak) IBOutlet UILabel *dueDateLabel;
+
 - (IBAction)done:(id)sender;
 
 - (IBAction)cancel:(id)sender;
