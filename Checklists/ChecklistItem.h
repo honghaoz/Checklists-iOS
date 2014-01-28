@@ -1,5 +1,5 @@
 //
-//  ChecklistsItem.h
+//  ChecklistItem.h
 //  Checklists
 //
 //  Created by Zhang Honghao on 1/26/14.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ChecklistsItem : NSObject
+@interface ChecklistItem : NSObject <NSCoding>
 
 @property (nonatomic, copy) NSString *text;
 @property (nonatomic, assign) BOOL checked;

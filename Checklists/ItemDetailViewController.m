@@ -1,18 +1,18 @@
 //
-//  AddItemViewController.m
+//  ItemDetailViewController.m
 //  Checklists
 //
 //  Created by Zhang Honghao on 1/26/14.
 //  Copyright (c) 2014 org-honghao. All rights reserved.
 //
 
-#import "AddItemViewController.h"
+#import "ItemDetailViewController.h"
 
-@interface AddItemViewController ()
+@interface ItemDetailViewController ()
 
 @end
 
-@implementation AddItemViewController
+@implementation ItemDetailViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -32,6 +32,11 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    if (self.itemToEdit != nil){
+        self.title = @"Edit Item";
+        self.textField.text = self.itemToEdit.text;
+        self.doneBarButton.enabled = YES;
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -43,16 +48,20 @@
 - (IBAction)done:(id)sender {
 //    NSLog(@"Current text is %@", self.textField.text);
 //    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-    ChecklistsItem *item = [[ChecklistsItem alloc] init];
-    
-    item.text = self.textField.text;
-    item.checked= NO;
-    [self.delegate addItemViewControl:self didFinishAddingItem:item];
+    if (self.itemToEdit == nil) {
+        ChecklistItem *item = [[ChecklistItem alloc] init];
+        item.text = self.textField.text;
+        item.checked= NO;
+        [self.delegate itemDetailViewControl:self didFinishAddingItem:item];
+    } else {
+        self.itemToEdit.text = self.textField.text;
+        [self.delegate itemDetailViewControl:self didFinishEditingItem:self.itemToEdit];
+    }
 }
 
 - (IBAction)cancel:(id)sender {
 //    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-    [self.delegate addItemViewControllerDidCancel:self];
+    [self.delegate itemDetailViewControllerDidCancel:self];
 }
 
 -(NSIndexPath *)tableView: (UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
