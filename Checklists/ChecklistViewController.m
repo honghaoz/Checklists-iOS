@@ -7,7 +7,7 @@
 //
 
 #import "ChecklistViewController.h"
-#import "ChecklistItem.h"
+#import "ChecklistsItem.h"
 #import "Checklist.h"
 
 @interface ChecklistViewController ()
@@ -44,8 +44,8 @@
 //    _items = [[NSMutableArray alloc] initWithCapacity:20];
 //    
 //    for (int i = 0; i < 5; i++){
-//        ChecklistItem *item;
-//        item = [[ChecklistItem alloc] init];
+//        ChecklistsItem *item;
+//        item = [[ChecklistsItem alloc] init];
 //        item.text = [NSString stringWithFormat:@"the number: %d", i];
 //        item.checked = NO;
 //        
@@ -86,7 +86,7 @@
 
 // configure each cell
 
--(void)configureCheckMarkForCell: (UITableViewCell *)cell withChecklistItem:(ChecklistItem *)item{
+-(void)configureCheckMarkForCell: (UITableViewCell *)cell withChecklistItem:(ChecklistsItem *)item{
     UILabel *label = (UILabel *)[cell viewWithTag:1001];
     if (item.checked) {
         label.text = @"√";
@@ -95,7 +95,7 @@
     }
 }
 
--(void) configureTextForCell:(UITableViewCell *)cell withChecklistItem: (ChecklistItem *)item{
+-(void) configureTextForCell:(UITableViewCell *)cell withChecklistItem: (ChecklistsItem *)item{
     UILabel *label = (UILabel *)[cell viewWithTag:1000];
     label.text = item.text;
 }
@@ -110,7 +110,7 @@
 -(UITableViewCell *)tableView: (UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ChecklistItem"];
     
-    ChecklistItem *item = _items[indexPath.row];
+    ChecklistsItem *item = _items[indexPath.row];
     [self configureCheckMarkForCell:cell withChecklistItem:item];
     [self configureTextForCell:cell withChecklistItem:item];
     
@@ -119,7 +119,7 @@
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    ChecklistItem *item = _items[indexPath.row];
+    ChecklistsItem *item = _items[indexPath.row];
     [item toggleChecked];
     
     [self configureCheckMarkForCell:cell withChecklistItem:item];
@@ -139,7 +139,7 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(void)itemDetailViewControl:(ItemDetailViewController *)controller didFinishAddingItem:(ChecklistItem *)item {
+-(void)itemDetailViewControl:(ItemDetailViewController *)controller didFinishAddingItem:(ChecklistsItem *)item {
     int newRowIndex = (int)[_items count];
     [_items addObject:item];
     
@@ -153,7 +153,7 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(void)itemDetailViewControl:(ItemDetailViewController *)controller didFinishEditingItem:(ChecklistItem *)item{
+-(void)itemDetailViewControl:(ItemDetailViewController *)controller didFinishEditingItem:(ChecklistsItem *)item{
     NSInteger index = [_items indexOfObject:item];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
     

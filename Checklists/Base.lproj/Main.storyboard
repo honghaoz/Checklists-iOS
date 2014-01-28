@@ -186,7 +186,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xnX-w7-thj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="453" y="733"/>
+            <point key="canvasLocation" x="288" y="697"/>
         </scene>
         <!--List Detail View Controller - Add Checklist-->
         <scene sceneID="ML6-CM-ch3">
@@ -246,7 +246,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8d9-Lu-L65" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="890" y="733"/>
+            <point key="canvasLocation" x="759" y="697"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

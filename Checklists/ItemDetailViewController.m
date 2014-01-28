@@ -49,7 +49,7 @@
 //    NSLog(@"Current text is %@", self.textField.text);
 //    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
     if (self.itemToEdit == nil) {
-        ChecklistItem *item = [[ChecklistItem alloc] init];
+        ChecklistsItem *item = [[ChecklistsItem alloc] init];
         item.text = self.textField.text;
         item.checked= NO;
         [self.delegate itemDetailViewControl:self didFinishAddingItem:item];

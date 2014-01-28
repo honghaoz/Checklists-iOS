@@ -7,15 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ChecklistItem.h"
+#import "ChecklistsItem.h"
 @class ItemDetailViewController;
 
 
 @protocol ItemDetailViewControllerDelegate <NSObject>
 
 -(void)itemDetailViewControllerDidCancel: (ItemDetailViewController *)controller;
--(void)itemDetailViewControl:(ItemDetailViewController *)controller didFinishAddingItem:(ChecklistItem *)item;
--(void)itemDetailViewControl:(ItemDetailViewController *)controller didFinishEditingItem:(ChecklistItem *)item;
+-(void)itemDetailViewControl:(ItemDetailViewController *)controller didFinishAddingItem:(ChecklistsItem *)item;
+-(void)itemDetailViewControl:(ItemDetailViewController *)controller didFinishEditingItem:(ChecklistsItem *)item;
 
 @end
 
@@ -25,7 +25,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *doneBarButton;
 @property (weak, nonatomic) id <ItemDetailViewControllerDelegate> delegate;
 
-@property (nonatomic, strong) ChecklistItem *itemToEdit;
+@property (nonatomic, strong) ChecklistsItem *itemToEdit;
 
 - (IBAction)done:(id)sender;
 
