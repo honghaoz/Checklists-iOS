@@ -60,13 +60,13 @@
             //    NSString *dateString = [NSDateFormatter localizedStringFromDate:item.dueDate
             //                                                          dateStyle:NSDateFormatterShortStyle
             //                                                          timeStyle:NSDateFormatterFullStyle];
-            subLabel.text = [NSString stringWithFormat: @"Due: %@", dateString];
+            subLabel.text = [NSString stringWithFormat: @"%@", dateString];
         } else {
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
             [formatter setFormatterBehavior:NSDateFormatterBehavior10_4];
             [formatter setTimeStyle:NSDateFormatterShortStyle];
             NSString *dateString = [formatter stringForObjectValue:item.dueDate];
-            subLabel.text =[NSString stringWithFormat:@"Due: Today, %@",dateString];
+            subLabel.text =[NSString stringWithFormat:@"Today, %@",dateString];
         }
     }
     else {

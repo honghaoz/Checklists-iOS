@@ -79,7 +79,7 @@
     
     Checklist *checklist = self.dataModel.lists[indexPath.row];
     cell.textLabel.text = checklist.name;
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
     int count = [checklist countUncheckedItems];
     if ([checklist.items count] == 0){
         cell.detailTextLabel.text = @"No Items";
