@@ -37,11 +37,44 @@
 -(void)configureCheckMarkForCell: (UITableViewCell *)cell withChecklistItem:(ChecklistItem *)item{
     UILabel *label = (UILabel *)[cell viewWithTag:1001];
     if (item.checked) {
-        label.text = @"√";
+        label.text = @"◉";
     } else {
-        label.text = @"";
+        label.text = @"◎";
     }
     label.textColor = self.view.tintColor;
+    
+    UILabel *subLabel = (UILabel *)[cell viewWithTag:1002];
+    
+    if (item.shouldRemind) {
+        NSDateFormatter *dateFormatUsedForCompareDay = [[NSDateFormatter alloc] init];
+        [dateFormatUsedForCompareDay setDateFormat:@"yyyy-MM-dd"];
+        //get today's date
+        NSDate *dateToday = [NSDate date];
+        // if not today
+        if (![[dateFormatUsedForCompareDay stringFromDate:dateToday] isEqualToString:[dateFormatUsedForCompareDay stringFromDate:item.dueDate]]){
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            [formatter setFormatterBehavior:NSDateFormatterBehavior10_4];
+            [formatter setDateStyle:NSDateFormatterShortStyle];
+            [formatter setTimeStyle:NSDateFormatterShortStyle];
+            NSString *dateString = [formatter stringForObjectValue:item.dueDate];
+            //    NSString *dateString = [NSDateFormatter localizedStringFromDate:item.dueDate
+            //                                                          dateStyle:NSDateFormatterShortStyle
+            //                                                          timeStyle:NSDateFormatterFullStyle];
+            subLabel.text = [NSString stringWithFormat: @"Due: %@", dateString];
+        } else {
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            [formatter setFormatterBehavior:NSDateFormatterBehavior10_4];
+            [formatter setTimeStyle:NSDateFormatterShortStyle];
+            NSString *dateString = [formatter stringForObjectValue:item.dueDate];
+            subLabel.text =[NSString stringWithFormat:@"Due: Today, %@",dateString];
+        }
+    }
+    else {
+        subLabel.text = @"No reminder";
+        subLabel.alpha = 1.0f;
+    }
+    
+    
 }
 
 -(void) configureTextForCell:(UITableViewCell *)cell withChecklistItem: (ChecklistItem *)item{
@@ -62,10 +95,6 @@
     ChecklistItem *item = self.checklist.items[indexPath.row];
     [self configureCheckMarkForCell:cell withChecklistItem:item];
     [self configureTextForCell:cell withChecklistItem:item];
-    
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
-    cell.detailTextLabel.text = [dateFormatter stringFromDate:item.dueDate];
-    NSLog(@"%@", [dateFormatter stringFromDate:item.dueDate]);
     
     return cell;
 }
@@ -99,7 +128,8 @@
     
     [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
     
-    
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    [self configureCheckMarkForCell:cell withChecklistItem:item];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -109,6 +139,7 @@
     
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     [self configureTextForCell:cell withChecklistItem:item];
+    [self configureCheckMarkForCell:cell withChecklistItem:item];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
